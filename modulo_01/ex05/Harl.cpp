@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FileReplace.cpp                                    :+:      :+:    :+:   */
+/*   fileReplace.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include <iostream>
 #include <fstream>
-#include "FileReplace.hpp"
+#include "fileReplace.hpp"
 
-FileReplace::FileReplace(std::string fileName, std::string s1, std::string s2):_fileName(fileName), _s1(s1), _s2(s2)
+fileReplace::fileReplace(std::string fileName, std::string s1, std::string s2):_fileName(fileName), _s1(s1), _s2(s2)
 {
 	std::ifstream	ifs(this->_fileName);
 
@@ -35,12 +35,12 @@ FileReplace::FileReplace(std::string fileName, std::string s1, std::string s2):_
 	return ;
 }
 
-FileReplace::~FileReplace(void)
+fileReplace::~fileReplace(void)
 {
 	return ;
 }
 
-void	FileReplace::swapStrings()
+void	fileReplace::swapStrings()
 {
 	int	found = 0;
 	int	pos = 0;
@@ -64,7 +64,7 @@ void	FileReplace::swapStrings()
 	return ;
 }
 
-void	FileReplace::createReplaced()
+void	fileReplace::createReplaced()
 {
 	if (this->fileExists == 1)
 	{

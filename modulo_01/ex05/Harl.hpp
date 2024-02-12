@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FileReplace.hpp                                    :+:      :+:    :+:   */
+/*   fileReplace.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,13 +16,13 @@
 #include <string>
 #include <sstream>
 
-class FileReplace
+class fileReplace
 {
 	public:
 		int					fileExists;
 
-		FileReplace(std::string fileName, std::string s1, std::string s2);
-		~FileReplace(void);
+		fileReplace(std::string fileName, std::string s1, std::string s2);
+		~fileReplace(void);
 		void	swapStrings(void);
 		void	createReplaced(void);
 

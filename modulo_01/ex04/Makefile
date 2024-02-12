@@ -1,4 +1,4 @@
-SRCS = fileReplace.cpp \
+SRCS = FileReplace.cpp \
 	main.cpp
 
 OBJS = ${SRCS:.cpp=.o}

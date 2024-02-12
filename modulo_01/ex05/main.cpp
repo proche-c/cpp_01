@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FileReplace.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_REPLACE_HPP
-# define FILE_REPLACE_HPP
-
+#include <iostream>
+#include <fstream>
 #include <string>
-#include <sstream>
+#include "fileReplace.hpp"
 
-class FileReplace
+int	main(int argc, char **argv)
 {
-	public:
-		int					fileExists;
+	if (argc == 4 )
+	{
+		fileReplace		fr(argv[1], argv[2], argv[3]);
+		if (fr.fileExists == 1)
+		{
+			fr.swapStrings();
+			fr.createReplaced();
+		}
+		else
+			std::cout << "File not found" << std::endl;
+	}
+	else
+	{
+		std::cout << "Invalid arguments" << std::endl;
+	}
 
-		FileReplace(std::string fileName, std::string s1, std::string s2);
-		~FileReplace(void);
-		void	swapStrings(void);
-		void	createReplaced(void);
-
-	private:
-		std::string			_fileName;
-		std::string			_s1;
-		std::string			_s2;
-		std::stringstream	_content;
-		std::string			_stringContent;
-
-};
-#endif
+	return (0);
+}

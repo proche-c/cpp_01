@@ -13,13 +13,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "fileReplace.hpp"
+#include "FileReplace.hpp"
 
 int	main(int argc, char **argv)
 {
 	if (argc == 4 )
 	{
-		fileReplace		fr(argv[1], argv[2], argv[3]);
+		FileReplace		fr(argv[1], argv[2], argv[3]);
 		if (fr.fileExists == 1)
 		{
 			fr.swapStrings();
