@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,26 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include "fileReplace.hpp"
 
-HumanA::HumanA( std::string name, Weapon &weapon ) : _name(name), _weapon(weapon)
+int	main(int argc, char **argv)
 {
-    std::cout << "El humano " << this->_name << " ha sido creado." << std::endl;
-    return ;
-}
+	if (argc == 4 )
+	{
+		fileReplace		fr(argv[1], argv[2], argv[3]);
+		if (fr.fileExists == 1)
+		{
+			fr.swapStrings();
+			fr.createReplaced();
+		}
+		else
+			std::cout << "File not found" << std::endl;
+	}
+	else
+	{
+		std::cout << "Invalid arguments" << std::endl;
+	}
 
-HumanA::~HumanA( void )
-{
-    std::cout << "El humano " << this->_name << " ha sido destruido." << std::endl;
-    return ;
-}
-
-void    HumanA::attack( void ) const
-{
-    std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
-}
-
-void	HumanA::setWeapon(Weapon weapon)
-{
-	this->_weapon = weapon;
+	return (0);
 }

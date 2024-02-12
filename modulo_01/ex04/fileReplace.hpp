@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   fileReplace.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,26 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#ifndef FILE_REPLACE_HPP
+# define FILE_REPLACE_HPP
 
-HumanA::HumanA( std::string name, Weapon &weapon ) : _name(name), _weapon(weapon)
-{
-    std::cout << "El humano " << this->_name << " ha sido creado." << std::endl;
-    return ;
-}
+#include <string>
+#include <sstream>
 
-HumanA::~HumanA( void )
+class fileReplace
 {
-    std::cout << "El humano " << this->_name << " ha sido destruido." << std::endl;
-    return ;
-}
+	public:
+		int					fileExists;
 
-void    HumanA::attack( void ) const
-{
-    std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
-}
+		fileReplace(std::string fileName, std::string s1, std::string s2);
+		~fileReplace(void);
+		void	swapStrings(void);
+		void	createReplaced(void);
 
-void	HumanA::setWeapon(Weapon weapon)
-{
-	this->_weapon = weapon;
-}
+	private:
+		std::string			_fileName;
+		std::string			_s1;
+		std::string			_s2;
+		std::stringstream	_content;
+		std::string			_stringContent;
+
+};
+#endif
