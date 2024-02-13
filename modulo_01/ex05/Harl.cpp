@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileReplace.cpp                                    :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,68 +11,58 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <fstream>
-#include "fileReplace.hpp"
+#include "Harl.hpp"
 
-fileReplace::fileReplace(std::string fileName, std::string s1, std::string s2):_fileName(fileName), _s1(s1), _s2(s2)
+Harl::Harl()
 {
-	std::ifstream	ifs(this->_fileName);
+	std::cout << "Harl has been created" << std::endl;
+	return ;
+}
 
-	if (ifs.is_open())
+Harl::~Harl()
+{
+	std::cout << "Harl has been destroyed" << std::endl;
+	return ;
+}
+
+void    Harl::complain( std::string level )
+{
+	void		(Harl::*fComplain[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			i = 0;
+
+	while (i < 4)
 	{
-		this->fileExists = 1;
-		std::string	line;
-		while (std::getline(ifs, line))
+		if (levels[i] == level)
 		{
-			this->_content << line << std::endl;
+			(this->*fComplain[i])();
+			break ;
 		}
-		this->_stringContent = this->_content.str();
-		this->_stringContent.pop_back();
-		ifs.close();
+		i++;
 	}
-	else
-		this->fileExists = 0;
 	return ;
 }
 
-fileReplace::~fileReplace(void)
+void	Harl::debug()
 {
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special- ketchup burger. I really do!" << std::endl;
 	return ;
 }
 
-void	fileReplace::swapStrings()
+void	Harl::info()
 {
-	int	found = 0;
-	int	pos = 0;
-
-	if (this->_s1.length() > 0 && this->fileExists == 1)
-	{
-		while (found > -1 && pos < this->_stringContent.length())
-		{
-			found = this->_stringContent.find(this->_s1, pos);
-			//std::cout << "encontrado en: " << found << std::endl;
-			if (found > -1)
-			{
-				this->_stringContent.erase(found, this->_s1.length());
-				this->_stringContent.insert(found, this->_s2);
-			}
-			pos = found + this->_s2.length() + 1;
-		}
-	}
-	// else
-	// 	std::cout << "Invalid swap" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" << std::endl;
 	return ;
 }
 
-void	fileReplace::createReplaced()
+void	Harl::warning()
 {
-	if (this->fileExists == 1)
-	{
-		std::string	fileReplaceName = this->_fileName + ".replace";
-		std::ofstream	ofs(fileReplaceName);
+	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." << std::endl;
+	return ;
+}
 
-		ofs << this->_stringContent;
-		ofs.close();
-	}
+void	Harl::error()
+{
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 	return ;
 }

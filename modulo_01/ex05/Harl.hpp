@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileReplace.hpp                                    :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: proche-c <proche-c@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_REPLACE_HPP
-# define FILE_REPLACE_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 #include <string>
-#include <sstream>
 
-class fileReplace
+class Harl
 {
 	public:
-		int					fileExists;
-
-		fileReplace(std::string fileName, std::string s1, std::string s2);
-		~fileReplace(void);
-		void	swapStrings(void);
-		void	createReplaced(void);
+		Harl(void);
+		~Harl(void);
+		void    complain( std::string level );
 
 	private:
-		std::string			_fileName;
-		std::string			_s1;
-		std::string			_s2;
-		std::stringstream	_content;
-		std::string			_stringContent;
+		void debug( void );
+		void info( void );
+		void warning( void );
+		void error( void );
 
 };
 #endif

@@ -10,28 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "fileReplace.hpp"
+#include "Harl.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc == 4 )
-	{
-		fileReplace		fr(argv[1], argv[2], argv[3]);
-		if (fr.fileExists == 1)
-		{
-			fr.swapStrings();
-			fr.createReplaced();
-		}
-		else
-			std::cout << "File not found" << std::endl;
-	}
-	else
-	{
-		std::cout << "Invalid arguments" << std::endl;
-	}
+	Harl	SuperHarl;
+
+	SuperHarl.complain("INFO");
+	SuperHarl.complain("ERROR");
+	SuperHarl.complain("WARNING");
+	SuperHarl.complain("DEBUG");
 
 	return (0);
 }
